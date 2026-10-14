@@ -1,0 +1,168 @@
+[
+  {
+    "id": "fish",
+    "label": "Fish",
+    "credit": "FathomNet / FathomVerse (see original source record)",
+    "image": "assets/attributes/fish.webp",
+    "annotation": "assets/attributes/fish.json",
+    "record": {
+      "image": "2c852905-9fb3-46bb-927f-4d90195afb0f.jpg",
+      "width": 4000,
+      "height": 3000,
+      "objects": [
+        {
+          "bbox": [
+            553,
+            773,
+            2110,
+            1358
+          ],
+          "group": "Fish",
+          "concept": "Scorpaenidae",
+          "attributes": {
+            "species": "Scorpaena jacksoniensis",
+            "diagnosis": "Prominent eyes, rough texture, and mottled coloration with a flattened body shape.",
+            "dorsal_fin": "present",
+            "caudal_fin": "absent",
+            "pectoral_fin": "present",
+            "pelvic_fin": "present",
+            "anal_fin": "present",
+            "adipose_fin": "absent",
+            "barbel": "absent",
+            "body_shape_lateral": "flattened",
+            "type_of_eyes": "large-eyed",
+            "type_of_mouth_snout": "terminal mouth",
+            "cross_section": "compressed",
+            "dorsal_head_profile": "convex",
+            "color": "multicolored",
+            "camouflage": "high",
+            "texture": "rough",
+            "body_damage": "none",
+            "interaction": "['hiding-in-coral']"
+          }
+        }
+      ]
+    },
+    "provenance": {
+      "source": "https://database.fathomnet.org/api/images/2c852905-9fb3-46bb-927f-4d90195afb0f",
+      "imageUrl": "https://d2l7vcm2vanphr.cloudfront.net/full_images/JD_Netherlands1_JD_Netherlands1/20090413-IMG_5028.png",
+      "imageLicense": "CC-BY-NC-ND-4.0",
+      "bboxLicense": "CC-BY-NC-4.0",
+      "reviewState": "VERIFIED",
+      "dataset": "https://huggingface.co/datasets/Nereusdata/Nereus",
+      "revision": "910e1abd3b4dd8755a3e4191b59e84d113badcbe",
+      "sha256": "252c70c25b3444d5ef753c1cfaf022ac442b70718fa3a05b0e83a0afc1da9e30",
+      "sourceImageHashMatches": false,
+      "transformations": "Full-frame resize and WebP encoding. Interactive annotation and zoom are separate browser layers; no baked overlays or cropped image export.",
+      "publicationStatus": "Local research preview; review ND image terms before public deployment."
+    }
+  },
+  {
+    "id": "cuttlefish",
+    "label": "Cephalopod",
+    "credit": "FathomNet / FathomVerse (see original source record)",
+    "image": "assets/attributes/cuttlefish.webp",
+    "annotation": "assets/attributes/cuttlefish.json",
+    "record": {
+      "image": "13460870-cb45-4597-a743-6c0c0ba333ec.jpg",
+      "width": 4000,
+      "height": 3000,
+      "objects": [
+        {
+          "bbox": [
+            815,
+            779,
+            2500,
+            1800
+          ],
+          "group": "Cephalopods",
+          "concept": "cuttlefish",
+          "attributes": {
+            "cephalopod_group": "cuttlefish",
+            "body_form": "disk-like",
+            "mantle_shape": "tapered",
+            "fin_presence_placement": "absent",
+            "tentacle_presence": "present",
+            "sucker_visibility_type": "not visible",
+            "webbing_extent": "none",
+            "head_to_mantle_proportion": "balanced",
+            "dominant_color": "brown",
+            "skin_pattern": "mottled",
+            "skin_relief": "high",
+            "camouflage_visibility": "high",
+            "posture": "resting"
+          }
+        }
+      ]
+    },
+    "provenance": {
+      "source": "https://database.fathomnet.org/api/images/13460870-cb45-4597-a743-6c0c0ba333ec",
+      "imageUrl": "https://d2l7vcm2vanphr.cloudfront.net/full_images/G4PhFQYH21bCM1Q_JD_Crete1/20090810-IMG_7584.png",
+      "imageLicense": "CC-BY-NC-ND-4.0",
+      "bboxLicense": "CC-BY-NC-4.0",
+      "reviewState": "UNVERIFIED",
+      "dataset": "https://huggingface.co/datasets/Nereusdata/Nereus",
+      "revision": "910e1abd3b4dd8755a3e4191b59e84d113badcbe",
+      "sha256": "22e699d79b2371fe73bb8da5f656ceafc215b3c6b8c0336e265376921c1f7c53",
+      "sourceImageHashMatches": false,
+      "transformations": "Full-frame resize and WebP encoding. Interactive annotation and zoom are separate browser layers; no baked overlays or cropped image export.",
+      "publicationStatus": "Local research preview; review ND image terms before public deployment."
+    }
+  },
+  {
+    "id": "coral",
+    "label": "Coral",
+    "credit": "NOAA Ocean Exploration / Benthic Animal Guide",
+    "image": "assets/attributes/coral.webp",
+    "annotation": "assets/attributes/coral.json",
+    "record": {
+      "image": "00c103b2-6d12-4929-8867-a1614cada73d.jpg",
+      "width": 1600,
+      "height": 900,
+      "objects": [
+        {
+          "bbox": [
+            574,
+            141,
+            924,
+            704
+          ],
+          "group": "Coral",
+          "concept": "Narella",
+          "attributes": {
+            "coral_group": "octocoral",
+            "growth_form": "fan-like",
+            "growth_outline_type": "fan-like",
+            "coloniality": "colonial",
+            "colony_size": "small",
+            "corallite_arrangement": "regular",
+            "color": "brown",
+            "colony_relief": "low",
+            "surface_texture": "smooth",
+            "corallite_visibility": "clear",
+            "coral_preciousness_grade": "medium",
+            "bleaching_state": "none",
+            "tissue_condition": "intact",
+            "algal_overgrowth": "none",
+            "sediment_cover": "none",
+            "occlusion": "none",
+            "neighboring_contact": "['coral-rock contact']"
+          }
+        }
+      ]
+    },
+    "provenance": {
+      "source": "https://database.fathomnet.org/api/images/00c103b2-6d12-4929-8867-a1614cada73d",
+      "imageUrl": "https://oer.hpc.msstate.edu/FathomNet/BenthicAnimalGuide_training/PrimnoidaeBranched136_trimmed.png",
+      "imageLicense": "CC-BY-NC-ND-4.0",
+      "bboxLicense": "CC-BY-NC-4.0",
+      "reviewState": "UNVERIFIED",
+      "dataset": "https://huggingface.co/datasets/Nereusdata/Nereus",
+      "revision": "910e1abd3b4dd8755a3e4191b59e84d113badcbe",
+      "sha256": "5e6155c12ef98b86e23848c36b29e7e13a757d2025a48a5eb48e1401445f2f5f",
+      "sourceImageHashMatches": false,
+      "transformations": "Full-frame resize and WebP encoding. Interactive annotation and zoom are separate browser layers; no baked overlays or cropped image export.",
+      "publicationStatus": "Local research preview; review ND image terms before public deployment."
+    }
+  }
+]

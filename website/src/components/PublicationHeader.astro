@@ -1,0 +1,93 @@
+---
+import { FileText, Library, CodeXml, Database, Quote } from "@lucide/astro";
+import publication from "../data/publication.json";
+const paperUrl: string | null = publication.paperUrl;
+const arxivUrl: string | null = publication.arxivUrl;
+---
+
+<section
+  id="publication"
+  class="publication-header container"
+  aria-label="Authors and publication resources"
+>
+  <ul class="authors" aria-label="Authors in publication order">
+    {publication.authors.map((author) => (
+      <li
+        class:list={[
+          "author",
+          {
+            "equal-contributor": author.equalContribution,
+            "corresponding-author": author.corresponding,
+          },
+        ]}
+      >
+        <span class="author-name">{author.name}</span>
+        <sup>
+          {author.affiliation}
+          {author.equalContribution ? "*" : ""}
+          {author.corresponding ? "\u2020" : ""}
+        </sup>
+      </li>
+    ))}
+  </ul>
+  <ul class="affiliations" aria-label="Author affiliations">
+    {publication.affiliations.map((affiliation) => (
+      <li>
+        <sup>{affiliation.id}</sup>{" "}
+        <a href={affiliation.url}>{affiliation.name}</a>
+      </li>
+    ))}
+  </ul>
+  <p class="contribution-notes">
+    <span>
+      <sup>*</sup> Equal contribution
+    </span>
+    <span>
+      <sup>&dagger;</sup> Corresponding author
+    </span>
+  </p>
+  <div class="publication-links">
+    {paperUrl ? (
+      <a class="button publication-link" href={paperUrl}>
+        <FileText size={18} />
+        Paper
+      </a>
+    ) : (
+      <button
+        class="button publication-link"
+        disabled
+        aria-label="Paper coming soon"
+      >
+        <FileText size={18} />
+        Paper<span class="soon-label">Soon</span>
+      </button>
+    )}
+    {arxivUrl ? (
+      <a class="button publication-link" href={arxivUrl}>
+        <Library size={18} />
+        arXiv
+      </a>
+    ) : (
+      <button
+        class="button publication-link"
+        disabled
+        aria-label="arXiv coming soon"
+      >
+        <Library size={18} />
+        arXiv<span class="soon-label">Soon</span>
+      </button>
+    )}
+    <a class="button publication-link" href={publication.codeUrl}>
+      <CodeXml size={18} />
+      Code
+    </a>
+    <a class="button publication-link" href={publication.datasetUrl}>
+      <Database size={18} />
+      Dataset
+    </a>
+    <a class="button publication-link" href="#bibtex">
+      <Quote size={18} />
+      BibTeX
+    </a>
+  </div>
+</section>

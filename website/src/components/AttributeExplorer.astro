@@ -1,0 +1,171 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+import attrs from "../data/attributes.json";
+import { Fish, Shell, Flower2, ScanSearch } from "@lucide/astro";
+const icons = [Fish, Shell, Flower2];
+---
+
+<section id="attributes" class="section pale-band">
+  <div class="container">
+    <SectionHeading
+      number="02"
+      label="Fine-grained attribute understanding"
+      title="Biological detail, not just a label."
+      description="An organism-specific, 136-dimensional taxonomy organized around five complementary perspectives."
+    />
+    <div class="attribute-explorer" id="attribute-explorer">
+      <div class="attribute-taxonomy">
+        <span class="micro-label">Attribute category</span>
+        <div
+          role="tablist"
+          aria-label="Attribute category"
+          aria-orientation="vertical"
+        >
+          {attrs.categories.map((c, i) => (
+            <button
+              id={`attr-tab-${i}`}
+              role="tab"
+              aria-controls="attribute-panel"
+              aria-selected={i === 0 ? "true" : "false"}
+              tabindex={i === 0 ? 0 : -1}
+              data-category={i}
+            >
+              <span>{String(i + 1).padStart(2, "0")}</span>
+              {c.name}
+              <span class="tab-arrow">↗</span>
+            </button>
+          ))}
+        </div>
+      </div>
+      <div
+        id="attribute-panel"
+        role="tabpanel"
+        aria-labelledby="attr-tab-0"
+        tabindex="0"
+        class="attribute-detail"
+      >
+        <div class="attribute-topline">
+          <span class="micro-label">From the manuscript</span>
+          <span class="source-note">Figures 6–7 · p. 14</span>
+        </div>
+        <h3 id="category-title">{attrs.categories[0].name}</h3>
+        <p id="category-description">{attrs.categories[0].description}</p>
+        <div class="field-list" id="category-fields">
+          {attrs.categories[0].fields.map((f) => (
+            <span>{f}</span>
+          ))}
+        </div>
+        <div class="organism-tabs" role="group" aria-label="Organism example">
+          {attrs.examples.map((s, i) => {
+            const Icon = icons[i];
+            return (
+              <button
+                data-organism={i}
+                aria-pressed={i === 0 ? "true" : "false"}
+              >
+                <Icon size={19} />
+                {s.name}
+              </button>
+            );
+          })}
+        </div>
+        <div class="specimen-heading">
+          <ScanSearch size={22} />
+          <div>
+            <span class="micro-label">Published annotation excerpt</span>
+            <h4 id="organism-identity">{attrs.examples[0].identity}</h4>
+          </div>
+        </div>
+        <dl id="attribute-values" class="attribute-values">
+          <div>
+            <dt>Species</dt>
+            <dd>Arothron hispidus</dd>
+          </div>
+        </dl>
+        <p class="source-note attribute-permission">
+          Text excerpts from Figure 6. Source images and target boxes are
+          withheld until per-image redistribution permissions and aligned sample
+          files are verified.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  import attrs from "../data/attributes.json";
+  let category = 0,
+    organism = 0;
+  const categoryButtons = Array.from(
+    document.querySelectorAll<HTMLButtonElement>("[data-category]"),
+  );
+  const organismButtons = Array.from(
+    document.querySelectorAll<HTMLButtonElement>("[data-organism]"),
+  );
+  function render() {
+    categoryButtons.forEach((b, i) => {
+      b.setAttribute("aria-selected", String(i === category));
+      b.tabIndex = i === category ? 0 : -1;
+    });
+    organismButtons.forEach((b, i) =>
+      b.setAttribute("aria-pressed", String(i === organism)),
+    );
+    document
+      .querySelector("#attribute-panel")!
+      .setAttribute("aria-labelledby", `attr-tab-${category}`);
+    document.querySelector("#category-title")!.textContent =
+      attrs.categories[category].name;
+    document.querySelector("#category-description")!.textContent =
+      attrs.categories[category].description;
+    const fields = document.querySelector("#category-fields")!;
+    fields.replaceChildren(
+      ...attrs.categories[category].fields.map((t) => {
+        const e = document.createElement("span");
+        e.textContent = t;
+        return e;
+      }),
+    );
+    document.querySelector("#organism-identity")!.textContent =
+      attrs.examples[organism].identity;
+    const values = document.querySelector("#attribute-values")!;
+    const entries = Object.entries(attrs.examples[organism].values[category]);
+    values.replaceChildren();
+    if (!entries.length) {
+      const p = document.createElement("p");
+      p.textContent = "This category is not shown in the published excerpt.";
+      values.append(p);
+    }
+    entries.forEach(([k, v]) => {
+      const row = document.createElement("div"),
+        dt = document.createElement("dt"),
+        dd = document.createElement("dd");
+      dt.textContent = k;
+      dd.textContent = String(v);
+      row.append(dt, dd);
+      values.append(row);
+    });
+  }
+  categoryButtons.forEach((b, i) => {
+    b.addEventListener("click", () => {
+      category = i;
+      render();
+    });
+    b.addEventListener("keydown", (e) => {
+      let next = i;
+      if (e.key === "ArrowDown") next = (i + 1) % 5;
+      else if (e.key === "ArrowUp") next = (i + 4) % 5;
+      else if (e.key === "Home") next = 0;
+      else if (e.key === "End") next = 4;
+      else return;
+      e.preventDefault();
+      category = next;
+      render();
+      categoryButtons[next].focus();
+    });
+  });
+  organismButtons.forEach((b, i) =>
+    b.addEventListener("click", () => {
+      organism = i;
+      render();
+    }),
+  );
+</script>

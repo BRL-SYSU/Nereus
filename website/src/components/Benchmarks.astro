@@ -1,0 +1,308 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+import BenchmarkTable from "./BenchmarkTable.astro";
+import science from "../data/science.json";
+const tabs = [
+  ["attributes", "Attributes"],
+  ["trackA", "Track A · RGB"],
+  ["trackB", "Track B · Density"],
+  ["transfer", "Transfer"],
+  ["ablations", "Ablations"],
+];
+const col = (key: string, label: string) => ({ key, label });
+---
+
+<section id="benchmarks" class="section pale-band">
+  <div class="container">
+    <SectionHeading
+      number="05"
+      label="Benchmark & results"
+      title="Richer supervision. Measurable differences."
+      description="Representative multimodal backbones, distinct evaluation protocols, and the trade-offs behind the headline results."
+    />
+    <div class="benchmark-tabs" role="tablist" aria-label="Benchmark view">
+      {tabs.map(([key, label], i) => (
+        <button
+          id={`bench-tab-${key}`}
+          data-benchmark={key}
+          role="tab"
+          aria-controls={`benchmark-${key}`}
+          aria-selected={i === 0 ? "true" : "false"}
+          tabindex={i === 0 ? 0 : -1}
+        >
+          {label}
+        </button>
+      ))}
+    </div>
+    <div
+      id="benchmark-attributes"
+      data-benchmark-panel
+      role="tabpanel"
+      aria-labelledby="bench-tab-attributes"
+      tabindex="0"
+    >
+      <div class="benchmark-intro">
+        <h3>Fine-grained attribute understanding</h3>
+        <p>{science.protocols.attributes}</p>
+      </div>
+      <div
+        class="result-chart"
+        aria-label="Overall accuracy comparison, 0 to 100 percent"
+      >
+        <div class="chart-key">
+          <span>
+            <i class="naut-swatch"></i>NautData
+          </span>
+          <span>
+            <i class="nereus-swatch"></i>Nereus
+          </span>
+          <span>Overall accuracy (%) ↑</span>
+        </div>
+        {science.attributeResults.map((r) => (
+          <div class="chart-row">
+            <span>{r.model}</span>
+            <div class="bar-pair">
+              <div class="result-bar naut-bar" style={`width:${r.naut}%`}>
+                <span>{r.naut.toFixed(2)}</span>
+              </div>
+              <div class="result-bar nereus-bar" style={`width:${r.nereus}%`}>
+                <span>{r.nereus.toFixed(2)}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+        <div class="chart-axis">
+          <span>0</span>
+          <span>50</span>
+          <span>100</span>
+        </div>
+      </div>
+      <BenchmarkTable
+        caption="Table 2 · Overall attribute results"
+        columns={[
+          col("model", "Backbone"),
+          col("zs", "Zero-shot ↑"),
+          col("naut", "NautData ↑"),
+          col("marine", "MarineInst20M ↑"),
+          col("nereus", "Nereus ↑"),
+          col("similarity", "Nereus SIM ↑"),
+        ]}
+        rows={science.attributeResults}
+        highlight="nereus"
+      />
+      <p class="source-note">
+        Gemini 2.0 Flash zero-shot: 17.86% accuracy, 57.90 similarity.
+        Fine-tuned results are not reported for Gemini. Values reproduced from
+        Table 2, p. 7.
+      </p>
+    </div>
+    <div
+      id="benchmark-trackA"
+      data-benchmark-panel
+      role="tabpanel"
+      aria-labelledby="bench-tab-trackA"
+      tabindex="0"
+      hidden
+    >
+      <div class="benchmark-intro">
+        <h3>Track A: RGB-only grounded counting</h3>
+        <p>{science.protocols.trackA}</p>
+      </div>
+      <div class="table-filter">
+        <label for="model-filter">Backbone</label>
+        <select id="model-filter">
+          <option value="all">All backbones</option>
+          {[...new Set(science.countingResults.map((r) => r.model))].map(
+            (m) => (
+              <option value={m}>{m}</option>
+            ),
+          )}
+        </select>
+      </div>
+      <BenchmarkTable
+        caption="Table 3A · Grounded counting from RGB"
+        columns={[
+          col("model", "Backbone"),
+          col("setting", "Setting"),
+          col("mae", "MAE ↓"),
+          col("exact", "Exact % ↑"),
+          col("acc5", "Acc@5 % ↑"),
+          col("cell", "Cell % ↑"),
+          col("camo", "Camo F1 % ↑"),
+        ]}
+        rows={science.countingResults}
+      />
+      <p class="source-note">
+        Main Table 3 values are retained. InternVL baseline camouflage F1
+        conflicts with supplementary Table 11; see{" "}
+        <a href="#version-note">version notes</a> and release review. Gemini's
+        “Full” label does not establish that Gemini was fine-tuned.
+      </p>
+    </div>
+    <div
+      id="benchmark-trackB"
+      data-benchmark-panel
+      role="tabpanel"
+      aria-labelledby="bench-tab-trackB"
+      tabindex="0"
+      hidden
+    >
+      <div class="benchmark-intro">
+        <h3>Track B: interpreting density evidence</h3>
+        <p>{science.protocols.trackB}</p>
+      </div>
+      <BenchmarkTable
+        caption="Table 3B · RGB + density evidence"
+        columns={[
+          col("model", "Backbone"),
+          col("setting", "Setting"),
+          col("hotspot", "Hotspot acc. ↑"),
+          col("density", "Density F1 ↑"),
+          col("grounding", "Ecology / grounding F1 ↑"),
+        ]}
+        rows={science.densityResults}
+      />
+      <p class="source-note">
+        Density F1 improvements do not imply universal gains: Qwen D-QA hotspot
+        accuracy falls from 41.75 to 37.39 while density F1 rises from 18.13 to
+        45.26.
+      </p>
+    </div>
+    <div
+      id="benchmark-transfer"
+      data-benchmark-panel
+      role="tabpanel"
+      aria-labelledby="bench-tab-transfer"
+      tabindex="0"
+      hidden
+    >
+      <div class="benchmark-intro">
+        <h3>Transferring counting supervision into Nereus</h3>
+        <p>{science.protocols.transfer}</p>
+      </div>
+      <BenchmarkTable
+        caption="Table 9 · Qwen2.5-VL-7B on Nereus Track A"
+        columns={[
+          col("setting", "Training supervision"),
+          col("mae", "MAE ↓"),
+          col("rmse", "RMSE ↓"),
+          col("exact", "Exact % ↑"),
+          col("acc5", "Acc@5 % ↑"),
+          col("acc10", "Acc@10 % ↑"),
+          col("cell", "Cell % ↑"),
+          col("camo", "Camo F1 % ↑"),
+        ]}
+        rows={science.transferResults}
+      />
+    </div>
+    <div
+      id="benchmark-ablations"
+      data-benchmark-panel
+      role="tabpanel"
+      aria-labelledby="bench-tab-ablations"
+      tabindex="0"
+      hidden
+    >
+      <div class="benchmark-intro">
+        <h3>Supervision format and underwater degradation</h3>
+        <p>
+          Qwen2.5-VL-7B. Structured attributes improve overall accuracy over
+          object captions; image enhancement does not automatically improve
+          fine-grained perception.
+        </p>
+      </div>
+      <BenchmarkTable
+        caption="Tables 4 and 8 · Selected attribute ablations"
+        columns={[
+          col("setting", "Setting"),
+          col("accuracy", "Overall acc. % ↑"),
+          col("similarity", "Overall SIM ↑"),
+          col("source", "Source"),
+        ]}
+        rows={science.ablations}
+      />
+      <p class="source-note">
+        Not every attribute category follows the overall ranking. QA-pair
+        supervision scores 77.90% on ecological health versus 39.92% for
+        structured attributes (Table 4).
+      </p>
+    </div>
+    <details class="protocol-key">
+      <summary>Training settings and interpretation</summary>
+      <dl>
+        <div>
+          <dt>ZS / P-ZS</dt>
+          <dd>Zero-shot / prompted zero-shot.</dd>
+        </div>
+        <div>
+          <dt>Count</dt>
+          <dd>Count-only supervised fine-tuning.</dd>
+        </div>
+        <div>
+          <dt>QAS</dt>
+          <dd>QA + structured-final supervised fine-tuning.</dd>
+        </div>
+        <div>
+          <dt>D-QA</dt>
+          <dd>Density-QA supervised fine-tuning.</dd>
+        </div>
+        <div>
+          <dt>Full</dt>
+          <dd>
+            Full Nereus setting as labeled by the manuscript; Gemini's training
+            status is not established.
+          </dd>
+        </div>
+      </dl>
+      <p>
+        No statistical significance or confidence intervals are claimed. These
+        are manuscript values, not new experiments run for this website.
+      </p>
+    </details>
+  </div>
+</section>
+<noscript>
+  <style>
+    [data-benchmark-panel][hidden] {
+      display: block;
+      margin-top: 2rem;
+    }
+  </style>
+</noscript>
+<script>
+  const tabs = Array.from(
+    document.querySelectorAll<HTMLButtonElement>("[data-benchmark]"),
+  );
+  function select(key: string) {
+    tabs.forEach((b) => {
+      const active = b.dataset.benchmark === key;
+      b.setAttribute("aria-selected", String(active));
+      b.tabIndex = active ? 0 : -1;
+    });
+    document
+      .querySelectorAll<HTMLElement>("[data-benchmark-panel]")
+      .forEach((p) => (p.hidden = p.id !== `benchmark-${key}`));
+  }
+  tabs.forEach((b, i) => {
+    b.addEventListener("click", () => select(b.dataset.benchmark!));
+    b.addEventListener("keydown", (e) => {
+      let n = i;
+      if (e.key === "ArrowRight") n = (i + 1) % tabs.length;
+      else if (e.key === "ArrowLeft") n = (i + tabs.length - 1) % tabs.length;
+      else if (e.key === "Home") n = 0;
+      else if (e.key === "End") n = tabs.length - 1;
+      else return;
+      e.preventDefault();
+      select(tabs[n].dataset.benchmark!);
+      tabs[n].focus();
+    });
+  });
+  document
+    .querySelector<HTMLSelectElement>("#model-filter")
+    ?.addEventListener("change", (e) => {
+      const v = (e.target as HTMLSelectElement).value;
+      document
+        .querySelectorAll<HTMLElement>("#benchmark-trackA tbody tr")
+        .forEach((r) => (r.hidden = v !== "all" && r.dataset.model !== v));
+    });
+</script>

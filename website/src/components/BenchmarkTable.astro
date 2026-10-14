@@ -1,0 +1,47 @@
+---
+interface Props {
+  caption: string;
+  columns: { key: string; label: string }[];
+  rows: Record<string, unknown>[];
+  highlight?: string;
+}
+const { caption, columns, rows, highlight } = Astro.props;
+---
+
+<div class="table-scroll" role="region" aria-label={caption} tabindex="0">
+  <table>
+    <caption>{caption}</caption>
+    <thead>
+      <tr>
+        {columns.map((c) => (
+          <th scope="col">{c.label}</th>
+        ))}
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((row) => (
+        <tr
+          data-model={row.model}
+          class:list={[
+            {
+              "highlight-row":
+                row.setting === "QAS" || row.setting === "Nereus QAS",
+            },
+          ]}
+        >
+          {columns.map((c, i) =>
+            i === 0 ? (
+              <th scope="row">{String(row[c.key])}</th>
+            ) : (
+              <td class:list={[{ "highlight-cell": c.key === highlight }]}>
+                {typeof row[c.key] === "number"
+                  ? (row[c.key] as number).toFixed(2)
+                  : String(row[c.key] ?? "—")}
+              </td>
+            ),
+          )}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

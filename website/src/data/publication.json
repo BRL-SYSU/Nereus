@@ -1,0 +1,74 @@
+{
+  "authors": [
+    {
+      "name": "Jingtao Deng",
+      "given": "Jingtao",
+      "family": "Deng",
+      "affiliation": 1,
+      "equalContribution": true,
+      "corresponding": false
+    },
+    {
+      "name": "Zihao Jin",
+      "given": "Zihao",
+      "family": "Jin",
+      "affiliation": 1,
+      "equalContribution": true,
+      "corresponding": false
+    },
+    {
+      "name": "Yuehe Chen",
+      "given": "Yuehe",
+      "family": "Chen",
+      "affiliation": 1,
+      "equalContribution": false,
+      "corresponding": false
+    },
+    {
+      "name": "Feixiang He",
+      "given": "Feixiang",
+      "family": "He",
+      "affiliation": 2,
+      "equalContribution": false,
+      "corresponding": false
+    },
+    {
+      "name": "Shuiwang Li",
+      "given": "Shuiwang",
+      "family": "Li",
+      "affiliation": 3,
+      "equalContribution": false,
+      "corresponding": false
+    },
+    {
+      "name": "Dan Zeng",
+      "given": "Dan",
+      "family": "Zeng",
+      "affiliation": 1,
+      "equalContribution": false,
+      "corresponding": true
+    }
+  ],
+  "affiliations": [
+    {
+      "id": 1,
+      "name": "Sun Yat-sen University",
+      "url": "https://www.sysu.edu.cn/sysuen/"
+    },
+    {
+      "id": 2,
+      "name": "Central South University",
+      "url": "https://en.csu.edu.cn/"
+    },
+    {
+      "id": 3,
+      "name": "Guilin University of Technology",
+      "url": "https://www.glut.edu.cn/"
+    }
+  ],
+  "year": 2026,
+  "paperUrl": null,
+  "arxivUrl": null,
+  "codeUrl": "https://github.com/BRL-SYSU/Nereus",
+  "datasetUrl": "https://huggingface.co/datasets/Nereusdata/Nereus"
+}

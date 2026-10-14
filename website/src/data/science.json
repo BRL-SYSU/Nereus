@@ -1,0 +1,417 @@
+{
+  "title": "Nereus: A Large-Scale Underwater Dataset for Fine-Grained Attribute Understanding and Grounded Counting Perception",
+  "venue": "NeurIPS 2026 · Datasets & Benchmarks",
+  "statistics": [
+    {
+      "id": "images",
+      "value": 88555,
+      "display": "88,555",
+      "label": "Underwater images",
+      "source": "Section 3.1; Figure 3, p. 4"
+    },
+    {
+      "id": "qa",
+      "value": 2680000,
+      "display": "2.68M",
+      "label": "Question-answer pairs",
+      "source": "Abstract, p. 1"
+    },
+    {
+      "id": "dimensions",
+      "value": 136,
+      "display": "136",
+      "label": "Attribute dimensions",
+      "source": "Section 3.1, p. 4; Figure 7, p. 14"
+    },
+    {
+      "id": "species",
+      "value": 2690,
+      "display": "2,690",
+      "label": "Marine species",
+      "source": "Abstract, p. 1"
+    },
+    {
+      "id": "objects",
+      "value": 136000,
+      "display": "136K",
+      "label": "Objects (paper-reported)",
+      "source": "Abstract, p. 1; Figure 3 discrepancy unresolved"
+    },
+    {
+      "id": "genera",
+      "value": 1515,
+      "display": "1,515",
+      "label": "Genera",
+      "source": "Abstract, p. 1"
+    },
+    {
+      "id": "points",
+      "value": 65000,
+      "display": "65K",
+      "label": "Points (paper-reported)",
+      "source": "Abstract, p. 1; disputed, not verified release total"
+    },
+    {
+      "id": "countQa",
+      "value": 67000,
+      "display": "67K",
+      "label": "Grounded counting QA",
+      "source": "Abstract, p. 1"
+    }
+  ],
+  "sources": [
+    { "name": "FathomNet", "count": 67248, "color": "#146b82" },
+    { "name": "iNaturalist", "count": 13480, "color": "#43a7a0" },
+    { "name": "IOCfish5K", "count": 5637, "color": "#c7634f" },
+    { "name": "CoralVQA", "count": 2190, "color": "#a58639" }
+  ],
+  "protocols": {
+    "attributes": "Overall accuracy (%) and semantic similarity (0–100) are distinct measures. Open backbones use language-side LoRA; the visual encoder is frozen. Table 2, p. 7; Appendix A.2, p. 15.",
+    "trackA": "RGB-only evaluation: total count, densest 3×3 grid cell and camouflage states. MAE is lower-is-better; accuracy and F1 are higher-is-better. Acc@5 is within ±5% of ground-truth count, not ±5 fish. Table 3A, p. 8; Appendix B.3, p. 21.",
+    "trackB": "RGB plus ground-truth-derived density heatmap. This evaluates interpretation of supplied density evidence, not autonomous density estimation from RGB. All metrics are percentages, higher-is-better. Table 3B, p. 8.",
+    "transfer": "Qwen2.5-VL-7B with different training supervision, evaluated on the same 1,129 Nereus Track A test samples. Nautilus-to-Nereus transfer, not evaluation on an external test set. Table 9, p. 18."
+  },
+  "attributeResults": [
+    {
+      "model": "LLaVA-OneVision-7B",
+      "zs": 10.48,
+      "naut": 12.06,
+      "marine": 13.56,
+      "nereus": 48.91,
+      "similarity": 74.1
+    },
+    {
+      "model": "InternVL2.5-8B",
+      "zs": 11.12,
+      "naut": 16.08,
+      "marine": 9.97,
+      "nereus": 48.1,
+      "similarity": 76.2
+    },
+    {
+      "model": "Qwen2.5-VL-7B",
+      "zs": 13.22,
+      "naut": 17.09,
+      "marine": 14.64,
+      "nereus": 41.55,
+      "similarity": 73.1
+    }
+  ],
+  "countingResults": [
+    {
+      "model": "Gemini 2.0 Flash",
+      "setting": "ZS",
+      "mae": 52.8,
+      "exact": 9.08,
+      "acc5": 11.12,
+      "cell": 28.79,
+      "camo": 18.94
+    },
+    {
+      "model": "Gemini 2.0 Flash",
+      "setting": "P-ZS",
+      "mae": 50.5,
+      "exact": 8.86,
+      "acc5": 13.29,
+      "cell": 15.5,
+      "camo": 17.09
+    },
+    {
+      "model": "Gemini 2.0 Flash",
+      "setting": "Full",
+      "mae": 55.5,
+      "exact": 9.04,
+      "acc5": 12.68,
+      "cell": 7.62,
+      "camo": 12.73
+    },
+    {
+      "model": "Qwen2.5-VL-7B",
+      "setting": "ZS",
+      "mae": 98.33,
+      "exact": 5.51,
+      "acc5": 5.51,
+      "cell": 7.62,
+      "camo": 9.58
+    },
+    {
+      "model": "Qwen2.5-VL-7B",
+      "setting": "P-ZS",
+      "mae": 94.34,
+      "exact": 7.26,
+      "acc5": 7.44,
+      "cell": 4.61,
+      "camo": 2.38
+    },
+    {
+      "model": "Qwen2.5-VL-7B",
+      "setting": "Count",
+      "mae": 38.57,
+      "exact": 9.92,
+      "acc5": 16.83,
+      "cell": 6.11,
+      "camo": 7.41
+    },
+    {
+      "model": "Qwen2.5-VL-7B",
+      "setting": "QAS",
+      "mae": 31.98,
+      "exact": 10.01,
+      "acc5": 18.51,
+      "cell": 49.16,
+      "camo": 52.85
+    },
+    {
+      "model": "Qwen2.5-VL-7B",
+      "setting": "Full",
+      "mae": 36.19,
+      "exact": 10.36,
+      "acc5": 16.56,
+      "cell": 47.39,
+      "camo": 54.06
+    },
+    {
+      "model": "LLaVA-OneVision-7B",
+      "setting": "ZS",
+      "mae": 113.61,
+      "exact": 4.63,
+      "acc5": 4.63,
+      "cell": 0,
+      "camo": 10.26
+    },
+    {
+      "model": "LLaVA-OneVision-7B",
+      "setting": "P-ZS",
+      "mae": 104.38,
+      "exact": 6.24,
+      "acc5": 6.24,
+      "cell": 0.18,
+      "camo": 13.33
+    },
+    {
+      "model": "LLaVA-OneVision-7B",
+      "setting": "Count",
+      "mae": 79.47,
+      "exact": 7.26,
+      "acc5": 8.77,
+      "cell": 0.09,
+      "camo": 16.9
+    },
+    {
+      "model": "LLaVA-OneVision-7B",
+      "setting": "QAS",
+      "mae": 52.81,
+      "exact": 8.06,
+      "acc5": 12.84,
+      "cell": 32.68,
+      "camo": 28.91
+    },
+    {
+      "model": "LLaVA-OneVision-7B",
+      "setting": "Full",
+      "mae": 52.27,
+      "exact": 8.06,
+      "acc5": 12.22,
+      "cell": 36.67,
+      "camo": 35.57
+    },
+    {
+      "model": "InternVL2.5-8B",
+      "setting": "ZS",
+      "mae": 87.38,
+      "exact": 2.22,
+      "acc5": 2.22,
+      "cell": 22.85,
+      "camo": 21.26
+    },
+    {
+      "model": "InternVL2.5-8B",
+      "setting": "P-ZS",
+      "mae": 167.55,
+      "exact": 0,
+      "acc5": 1.16,
+      "cell": 20.73,
+      "camo": 18.98
+    },
+    {
+      "model": "InternVL2.5-8B",
+      "setting": "Count",
+      "mae": 31.72,
+      "exact": 10.01,
+      "acc5": 19.04,
+      "cell": 20.81,
+      "camo": 14.72
+    },
+    {
+      "model": "InternVL2.5-8B",
+      "setting": "QAS",
+      "mae": 25.99,
+      "exact": 10.45,
+      "acc5": 20.46,
+      "cell": 52.7,
+      "camo": 50.02
+    },
+    {
+      "model": "InternVL2.5-8B",
+      "setting": "Full",
+      "mae": 30.48,
+      "exact": 9.74,
+      "acc5": 18.95,
+      "cell": 51.9,
+      "camo": 52.59
+    }
+  ],
+  "densityResults": [
+    {
+      "model": "Gemini 2.0 Flash",
+      "setting": "ZS",
+      "hotspot": 44.88,
+      "density": 18.35,
+      "grounding": 16.48
+    },
+    {
+      "model": "Gemini 2.0 Flash",
+      "setting": "Full",
+      "hotspot": 41.91,
+      "density": 18.22,
+      "grounding": 16.15
+    },
+    {
+      "model": "Qwen2.5-VL-7B",
+      "setting": "ZS",
+      "hotspot": 41.75,
+      "density": 18.13,
+      "grounding": 16.04
+    },
+    {
+      "model": "Qwen2.5-VL-7B",
+      "setting": "D-QA",
+      "hotspot": 37.39,
+      "density": 45.26,
+      "grounding": 37.19
+    },
+    {
+      "model": "Qwen2.5-VL-7B",
+      "setting": "Full",
+      "hotspot": 35.37,
+      "density": 45.24,
+      "grounding": 37.14
+    },
+    {
+      "model": "LLaVA-OneVision-7B",
+      "setting": "ZS",
+      "hotspot": 32.86,
+      "density": 18.98,
+      "grounding": 17.34
+    },
+    {
+      "model": "LLaVA-OneVision-7B",
+      "setting": "D-QA",
+      "hotspot": 1.42,
+      "density": 28.27,
+      "grounding": 23.9
+    },
+    {
+      "model": "LLaVA-OneVision-7B",
+      "setting": "Full",
+      "hotspot": 47.48,
+      "density": 30.32,
+      "grounding": 25.22
+    },
+    {
+      "model": "InternVL2.5-8B",
+      "setting": "ZS",
+      "hotspot": 42.13,
+      "density": 19.8,
+      "grounding": 18.37
+    },
+    {
+      "model": "InternVL2.5-8B",
+      "setting": "D-QA",
+      "hotspot": 37.59,
+      "density": 45.26,
+      "grounding": 36.35
+    },
+    {
+      "model": "InternVL2.5-8B",
+      "setting": "Full",
+      "hotspot": 38.7,
+      "density": 43.24,
+      "grounding": 35.0
+    }
+  ],
+  "transferResults": [
+    {
+      "setting": "Nautilus counting SFT",
+      "mae": 39.96,
+      "rmse": 158.5,
+      "exact": 9.65,
+      "acc5": 16.3,
+      "acc10": 24.53,
+      "cell": 6.11,
+      "camo": 8.48
+    },
+    {
+      "setting": "Nereus Count",
+      "mae": 38.57,
+      "rmse": 89.59,
+      "exact": 9.92,
+      "acc5": 16.83,
+      "acc10": 26.66,
+      "cell": 6.11,
+      "camo": 7.41
+    },
+    {
+      "setting": "Nereus QAS",
+      "mae": 31.98,
+      "rmse": 78.25,
+      "exact": 10.01,
+      "acc5": 18.51,
+      "acc10": 29.85,
+      "cell": 49.16,
+      "camo": 52.85
+    },
+    {
+      "setting": "Nereus Full",
+      "mae": 36.19,
+      "rmse": 84.74,
+      "exact": 10.36,
+      "acc5": 16.56,
+      "acc10": 25.33,
+      "cell": 47.39,
+      "camo": 54.06
+    }
+  ],
+  "ablations": [
+    {
+      "setting": "QA pairs",
+      "accuracy": 39.08,
+      "similarity": 55.2,
+      "source": "Table 4, p. 9"
+    },
+    {
+      "setting": "Object-level caption",
+      "accuracy": 16.78,
+      "similarity": 61.6,
+      "source": "Table 4, p. 9"
+    },
+    {
+      "setting": "Structured attributes / original image",
+      "accuracy": 41.55,
+      "similarity": 73.1,
+      "source": "Tables 4 and 8, pp. 9, 18"
+    },
+    {
+      "setting": "Degradation prior + original",
+      "accuracy": 40.51,
+      "similarity": 74.6,
+      "source": "Table 8, p. 18"
+    },
+    {
+      "setting": "Degradation prior + enhanced",
+      "accuracy": 37.36,
+      "similarity": 71.8,
+      "source": "Table 8, p. 18"
+    }
+  ]
+}

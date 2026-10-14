@@ -1,0 +1,249 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+import samples from "../data/attribute-samples.json";
+import { asset } from "../lib/paths";
+import {
+  Fish,
+  Shell,
+  Flower2,
+  Play,
+  Pause,
+  RotateCcw,
+  ScanSearch,
+  Maximize2,
+  ListChecks,
+  Download,
+} from "@lucide/astro";
+import "../styles/attributes.css";
+const sample = samples[0];
+const object = sample.record.objects[0];
+const icons = [Fish, Shell, Flower2];
+---
+
+<section id="attributes" class="section pale-band">
+  <div class="container">
+    <SectionHeading
+      number="02"
+      label="Fine-grained attribute understanding"
+      title="Biological detail, brought into focus."
+      description="Real Nereus annotations: from an organism in its habitat to morphology, appearance, condition and behavior."
+    />
+    <div id="attribute-story" aria-busy="false">
+      <div class="specimen-tabs" role="group" aria-label="Annotated specimens">
+        {samples.map((s, i) => {
+          const Icon = icons[i];
+          return (
+            <button data-specimen={i} data-organism={i} aria-pressed={i === 0}>
+              <img
+                src={asset(s.image)}
+                alt=""
+                width="64"
+                height="48"
+                loading="lazy"
+              />
+              <span>
+                <span class="micro-label">
+                  <Icon size={14} />
+                  {s.label}
+                </span>
+                <strong>{s.record.objects[0].concept}</strong>
+              </span>
+            </button>
+          );
+        })}
+      </div>
+      <div class="specimen-layout">
+        <div class="specimen-visual">
+          <div class="specimen-topline">
+            <span class="micro-label">Nereus / test split</span>
+            <span id="specimen-phase">Source image</span>
+          </div>
+          <div class="specimen-stage">
+            <div
+              id="specimen-plane"
+              style={`aspect-ratio:${sample.record.width}/${sample.record.height}`}
+            >
+              <img
+                id="specimen-image"
+                src={asset(sample.image)}
+                alt={`Nereus annotated ${object.concept} specimen`}
+                width={sample.record.width}
+                height={sample.record.height}
+                loading="lazy"
+              />
+              <div id="specimen-box" hidden>
+                <span>Annotated target</span>
+              </div>
+            </div>
+            <div id="specimen-loading" role="status" hidden>
+              Loading specimen...
+            </div>
+          </div>
+          <div class="attribute-controls">
+            <button
+              id="attribute-play"
+              class="icon-button"
+              aria-label="Play attribute sequence"
+              title="Play / pause"
+            >
+              <Play class="play-glyph" size={18} />
+              <Pause class="pause-glyph" size={18} />
+            </button>
+            <button
+              id="attribute-replay"
+              class="icon-button"
+              aria-label="Replay attribute sequence"
+              title="Replay"
+            >
+              <RotateCcw size={18} />
+            </button>
+            <input
+              id="attribute-progress"
+              type="range"
+              min="0"
+              max="14"
+              step="0.1"
+              value="0"
+              aria-label="Attribute sequence position"
+            />
+            <span id="attribute-time">00 / 14</span>
+            <button
+              id="attribute-zoom"
+              class="icon-button"
+              aria-label="Zoom to annotated target"
+              aria-pressed="false"
+              title="Target / full image"
+            >
+              <Maximize2 size={18} />
+            </button>
+            <button
+              id="attribute-all"
+              class="icon-button"
+              aria-label="Show all attributes"
+              title="Show all attributes"
+            >
+              <ListChecks size={18} />
+            </button>
+          </div>
+          <button id="specimen-retry" class="text-link" hidden>
+            Retry image
+          </button>
+          <p class="source-note specimen-credit">
+            <a id="specimen-source" href={sample.provenance.source}>
+              Original image record
+            </a>{" "}
+            · <span id="specimen-credit">{sample.credit}</span> ·{" "}
+            <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
+              CC BY-NC-ND 4.0
+            </a>
+          </p>
+        </div>
+        <div class="specimen-detail">
+          <div class="specimen-heading">
+            <ScanSearch size={22} />
+            <span class="micro-label">Dataset annotation</span>
+          </div>
+          <h3 id="specimen-name">{object.concept}</h3>
+          <p id="specimen-group">
+            {object.group} · {Object.keys(object.attributes).length} annotated
+            attributes
+          </p>
+          <div
+            class="specimen-perspectives"
+            role="tablist"
+            aria-label="Attribute category"
+          >
+            <button
+              role="tab"
+              id="attr-tab-all"
+              data-perspective="-1"
+              aria-controls="attribute-panel"
+              aria-selected="true"
+            >
+              Highlights
+            </button>
+            {[
+              "Identity",
+              "Morphology",
+              "Appearance",
+              "Condition",
+              "Pose & context",
+            ].map((name, i) => (
+              <button
+                role="tab"
+                id={`attr-tab-${i}`}
+                data-category={i}
+                data-perspective={i}
+                aria-controls="attribute-panel"
+                aria-selected="false"
+                tabindex="-1"
+              >
+                {name}
+              </button>
+            ))}
+            <button
+              role="tab"
+              id="attr-tab-complete"
+              data-perspective="-2"
+              aria-controls="attribute-panel"
+              aria-selected="false"
+              tabindex="-1"
+            >
+              All attributes
+            </button>
+          </div>
+          <div
+            id="attribute-panel"
+            role="tabpanel"
+            aria-labelledby="attr-tab-all"
+            tabindex="0"
+          >
+            <dl id="attribute-values" class="specimen-values">
+              {Object.entries(object.attributes)
+                .slice(0, 6)
+                .map(([key, value]) => (
+                  <div>
+                    <dt>{key.replaceAll("_", " ")}</dt>
+                    <dd>{String(value)}</dd>
+                  </div>
+                ))}
+            </dl>
+          </div>
+          <p class="source-note">
+            Source labels, not model predictions. Whole-object boxes; no
+            part-level localization is implied.
+          </p>
+        </div>
+      </div>
+      <details class="specimen-annotation">
+        <summary>Full source annotation</summary>
+        <div class="specimen-annotation-heading">
+          <span id="specimen-filename">{sample.record.image}</span>
+          <a
+            id="specimen-download"
+            class="icon-button"
+            href={asset(sample.annotation)}
+            download
+            aria-label="Download source annotation"
+            title="Download annotation"
+          >
+            <Download size={18} />
+          </a>
+        </div>
+        <pre id="specimen-json">{JSON.stringify(sample.record, null, 2)}</pre>
+      </details>
+      <p class="source-note specimen-license">
+        Local research preview. Image sources carry ND restrictions; public use
+        of animated zoom and annotation overlays requires rights review.{" "}
+        <a href={asset("assets/attributes/manifest.json")}>
+          Per-image provenance
+        </a>
+        .
+      </p>
+    </div>
+  </div>
+</section>
+<script>
+  import { initAttributeStory } from "../lib/attribute-story";
+  initAttributeStory();
+</script>

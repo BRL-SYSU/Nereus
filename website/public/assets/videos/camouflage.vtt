@@ -1,0 +1,21 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.500
+Camouflage-aware counting. Sample 0001. 134 clear-visibility annotations appear in teal.
+
+2
+00:00:03.500 --> 00:00:06.700
+130 ambiguous-visibility annotations appear in gold.
+
+3
+00:00:06.700 --> 00:00:08.700
+6 highly camouflaged annotations appear in coral. These are source labels, not model predictions.
+
+4
+00:00:08.700 --> 00:00:12.000
+Source-image detail: four of the six highly camouflaged point annotations lie in this crop. Coral rings mark their original coordinates.
+
+5
+00:00:12.000 --> 00:00:14.000
+134 clear, 130 ambiguous, and 6 highly camouflaged. 270 point annotations in total.

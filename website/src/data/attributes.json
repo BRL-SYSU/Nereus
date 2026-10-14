@@ -1,0 +1,93 @@
+{
+  "source": "Figures 6 and 7, p. 14; Section 3.1, p. 4",
+  "categories": [
+    {
+      "name": "Identity",
+      "description": "Taxonomic identity connects visual observations to biological knowledge.",
+      "fields": ["Species", "Genus", "Organism group"]
+    },
+    {
+      "name": "Structural morphology",
+      "description": "Organism-specific structures distinguish targets beyond a coarse category.",
+      "fields": ["Fin presence", "Mantle shape", "Growth form", "Body symmetry"]
+    },
+    {
+      "name": "Appearance and surface",
+      "description": "Color, patterns and texture describe the visible surface.",
+      "fields": ["Dominant color", "Skin pattern", "Surface texture"]
+    },
+    {
+      "name": "Condition and environment",
+      "description": "Visible condition and image-level degradation provide context, not hidden physiological diagnoses.",
+      "fields": [
+        "Body damage",
+        "Bleaching state",
+        "Sediment cover",
+        "Brightness",
+        "Color cast",
+        "Turbidity"
+      ]
+    },
+    {
+      "name": "Pose, visibility and interaction",
+      "description": "How an organism is positioned, occluded and related to its surroundings.",
+      "fields": [
+        "Posture",
+        "Camouflage visibility",
+        "Occlusion",
+        "Neighboring contact"
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "name": "Fish",
+      "identity": "Arothron hispidus",
+      "caption": "Figure 6 · textual annotation excerpt",
+      "values": [
+        { "Species": "Arothron hispidus" },
+        {
+          "Dorsal fin": "present",
+          "Caudal fin": "present",
+          "Type of mouth snout": "blunt snout"
+        },
+        { "Color": "blue-gray with white spots" },
+        { "Body damage": "none" },
+        { "Camouflage": "low" }
+      ]
+    },
+    {
+      "name": "Cephalopod",
+      "identity": "Cuttlefish",
+      "caption": "Figure 6 · textual annotation excerpt",
+      "values": [
+        { "Cephalopod group": "cuttlefish" },
+        {
+          "Head to mantle proportion": "balanced",
+          "Mantle shape": "tapered",
+          "Tentacle presence": "present"
+        },
+        { "Skin pattern": "banded" },
+        {},
+        { "Posture": "resting", "Camouflage visibility": "medium" }
+      ]
+    },
+    {
+      "name": "Coral",
+      "identity": "Parastenella",
+      "caption": "Figure 6 · textual annotation excerpt",
+      "values": [
+        { "Genus": "Parastenella" },
+        { "Growth form": "foliose", "Coloniality": "colonial" },
+        {},
+        {
+          "Sediment cover": "none",
+          "Brightness": "dark",
+          "Color cast": "green, moderate",
+          "Turbidity": "moderate"
+        },
+        {}
+      ]
+    }
+  ]
+}

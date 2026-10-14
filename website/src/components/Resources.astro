@@ -1,0 +1,151 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+import {
+  ArrowUpRight,
+  Database,
+  CodeXml,
+  FileText,
+  Copy,
+  Check,
+} from "@lucide/astro";
+import publication from "../data/publication.json";
+import { bibtex } from "../lib/citation";
+import { asset } from "../lib/paths";
+const paperUrl: string | null = publication.paperUrl;
+---
+
+<section id="resources" class="section pale-band">
+  <div class="container">
+    <SectionHeading
+      number="07"
+      label="Resources"
+      title="Continue the exploration."
+    />
+    <div class="resource-links">
+      <a href={publication.datasetUrl}>
+        <Database size={25} />
+        <div>
+          <h3>Nereus dataset</h3>
+          <p>Hugging Face repository</p>
+        </div>
+        <ArrowUpRight size={22} />
+      </a>
+      <a href={publication.codeUrl}>
+        <CodeXml size={25} />
+        <div>
+          <h3>Code & documentation</h3>
+          <p>Official GitHub repository</p>
+        </div>
+        <ArrowUpRight size={22} />
+      </a>
+      {paperUrl ? (
+        <a href={paperUrl}>
+          <FileText size={25} />
+          <div>
+            <h3>Paper</h3>
+            <p>Research manuscript</p>
+          </div>
+          <ArrowUpRight size={22} />
+        </a>
+      ) : (
+        <div class="resource-pending">
+          <FileText size={25} />
+          <div>
+            <h3>Paper</h3>
+            <p>Public PDF coming soon</p>
+          </div>
+        </div>
+      )}
+    </div>
+    <div class="citation" id="bibtex">
+      <div>
+        <span class="micro-label">Citation</span>
+        <h3>Cite Nereus</h3>
+        <p>
+          Provisional manuscript citation. The author list is confirmed;
+          publication details and the arXiv identifier are forthcoming.
+        </p>
+      </div>
+      <div class="citation-code">
+        <pre><code id="citation-bibtex">{bibtex}</code></pre>
+        <button
+          id="copy-bibtex"
+          class="icon-button"
+          aria-label="Copy BibTeX"
+          title="Copy BibTeX"
+        >
+          <Copy size={19} class="copy-icon" />
+          <Check size={19} class="check-icon" />
+        </button>
+        <span id="copy-status" class="sr-only" role="status"></span>
+      </div>
+    </div>
+    <div class="provenance" id="provenance">
+      <h3>Sources, rights & acknowledgments</h3>
+      <p>
+        <a href={asset("assets/licenses/nereus-counting-license.txt")}>
+          Counting license
+        </a>{" "}
+        ·{" "}
+        <a href={asset("assets/licenses/nereus-source-NOTICE.txt")}>
+          Source notice
+        </a>{" "}
+        ·{" "}
+        <a href={asset("assets/licenses/nereus-third-party-sources.txt")}>
+          Third-party sources
+        </a>
+      </p>
+      <p>
+        Counting imagery and original point annotations: Guolei Sun, Zhaochong
+        An, Yun Liu, Ce Liu, Christos Sakaridis, Deng-Ping Fan and Luc Van Gool,{" "}
+        <a href="https://openaccess.thecvf.com/content/CVPR2023/html/Sun_Indiscernible_Object_Counting_in_Underwater_Scenes_CVPR_2023_paper.html">
+          Indiscernible Object Counting in Underwater Scenes
+        </a>
+        , CVPR 2023. The{" "}
+        <a href="https://github.com/GuoleiSun/Indiscernible-Object-Counting#7-dataset-license">
+          official IOCfish5K license
+        </a>{" "}
+        is{" "}
+        <a href="https://creativecommons.org/licenses/by-nc/4.0/">
+          CC BY-NC 4.0
+        </a>
+        . Website exports are resized and WebP-compressed; films add animated
+        overlays and camera crops to existing annotations. No commercial-use
+        permission is implied.
+      </p>
+      <p>
+        Nereus also draws on FathomNet, iNaturalist and CoralVQA. Their
+        source-specific rights are not replaced by a blanket Nereus license.
+        Three FathomNet-derived attribute images appear in this local preview;
+        their CC BY-NC-ND 4.0 terms require review before public deployment of
+        the interactive presentation. The manuscript's new-attribute license and
+        release-level license require scope reconciliation before publication.
+      </p>
+      <p class="source-note">
+        Corresponding author: Dan Zeng, Sun Yat-sen University. For project
+        questions, use the{" "}
+        <a href="https://github.com/BRL-SYSU/Nereus/issues">
+          repository issue tracker
+        </a>{" "}
+        .
+      </p>
+    </div>
+  </div>
+</section>
+<script>
+  const button = document.querySelector<HTMLButtonElement>("#copy-bibtex")!;
+  button.addEventListener("click", async () => {
+    const status = document.querySelector("#copy-status")!;
+    try {
+      await navigator.clipboard.writeText(
+        document.querySelector("#citation-bibtex")!.textContent!.trim(),
+      );
+      status.textContent = "BibTeX copied";
+      button.classList.add("copied");
+      setTimeout(() => button.classList.remove("copied"), 2000);
+    } catch {
+      status.textContent =
+        "Clipboard unavailable. The BibTeX entry is selectable above.";
+    }
+  });
+</script>

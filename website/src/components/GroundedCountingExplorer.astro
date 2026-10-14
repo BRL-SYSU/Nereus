@@ -1,0 +1,191 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+import CountingFilms from "./CountingFilms.astro";
+import {
+  Image,
+  Crosshair,
+  Grid3x3 as Grid3X3,
+  Eye,
+  Flame,
+  Focus,
+  Download,
+} from "@lucide/astro";
+import samples from "../data/samples.json";
+import { asset } from "../lib/paths";
+const sample = samples[0];
+const modes = [
+  { id: "rgb", name: "RGB", Icon: Image },
+  { id: "points", name: "Points", Icon: Crosshair },
+  { id: "regions", name: "Regions", Icon: Grid3X3 },
+  { id: "visibility", name: "Visibility", Icon: Eye },
+  { id: "density", name: "Density", Icon: Flame },
+  { id: "hotspots", name: "Hotspots", Icon: Focus },
+];
+---
+
+<section id="counting" class="section container">
+  <SectionHeading
+    number="03"
+    label="Grounded counting perception"
+    title="Every count has a context."
+    description="The same scene, viewed through spatial, visibility and density evidence. These are dataset annotations, not live model predictions."
+  />
+  <CountingFilms />
+  <div class="explorer-heading">
+    <h3>Explore the annotations</h3>
+    <p>Points, regions, visibility and density evidence.</p>
+  </div>
+  <div class="counting-explorer" id="counting-explorer">
+    <div class="explorer-toolbar">
+      <div class="mode-group" role="group" aria-label="Evidence layer">
+        {modes.map(({ id, name, Icon }) => (
+          <button
+            data-mode={id}
+            aria-pressed={id === "points" ? "true" : "false"}
+            title={name}
+          >
+            <Icon size={17} />
+            <span>{name}</span>
+          </button>
+        ))}
+      </div>
+      <a
+        class="icon-button download-sample"
+        href={asset("assets/counting/samples.json")}
+        download
+        title="Download curated annotations"
+        aria-label="Download curated annotations"
+      >
+        <Download size={18} />
+      </a>
+    </div>
+    <div class="explorer-body">
+      <div class="evidence-column">
+        <div class="evidence-stage" aria-busy="false">
+          <img
+            id="evidence-image"
+            src={asset(sample.image)}
+            alt={`${sample.name}, IOCfish5K sample ${sample.id}`}
+            width="1920"
+            height="1080"
+            loading="lazy"
+          />
+          <img
+            id="density-image"
+            src={asset(sample.heatmap)}
+            alt="Precomputed point-derived density response"
+            width="1920"
+            height="1080"
+            loading="lazy"
+            hidden
+          />
+          <svg
+            id="evidence-layer"
+            viewBox="0 0 1920 1080"
+            role="img"
+            aria-label="90 ground-truth counting points"
+          >
+            {sample.points.map((p) => (
+              <circle
+                cx={p.x}
+                cy={p.y}
+                r="6"
+                fill="#ffdb76"
+                stroke="#173d43"
+                stroke-width="2"
+              />
+            ))}
+          </svg>
+          <span class="sample-stamp" id="sample-stamp">
+            IOCfish5K / 0000
+          </span>
+        </div>
+        <div class="evidence-caption">
+          <span id="mode-caption" role="status">
+            Original ground-truth points; one point per annotated fish.
+          </span>
+          <button id="retry-evidence" class="button" hidden>
+            Retry loading
+          </button>
+          <div id="mode-legend" class="mode-legend">
+            <i style="background:#ffdb76"></i>Ground-truth point
+          </div>
+        </div>
+        <div class="sample-strip" role="group" aria-label="Counting sample">
+          {samples.map((s, i) => (
+            <button
+              data-sample={s.id}
+              aria-pressed={i === 0 ? "true" : "false"}
+            >
+              <img
+                src={asset(`assets/counting/${s.id}-640.webp`)}
+                alt=""
+                width="192"
+                height="108"
+                loading="lazy"
+              />
+              <span>
+                <strong>{s.name}</strong>
+                <small>
+                  {s.id} · {s.count} points
+                </small>
+              </span>
+            </button>
+          ))}
+        </div>
+      </div>
+      <aside class="evidence-readout" aria-label="Annotation readout">
+        <div class="readout-heading">
+          <span class="micro-label">Ground truth</span>
+          <span id="sample-count">{sample.count}</span>
+          <p>annotated fish</p>
+        </div>
+        <div class="readout-block">
+          <h3>Spatial distribution</h3>
+          <div
+            id="sample-grid"
+            class="count-grid"
+            aria-label="3 by 3 spatial counts"
+          >
+            {Object.entries(sample.grid).map(([k, v]) => (
+              <div title={k} aria-label={`${k}: ${v}`}>
+                <span>{v}</span>
+                <small>{k.replace("center-", "mid-")}</small>
+              </div>
+            ))}
+          </div>
+          <p class="source-note">3 × 3 equal-area grid</p>
+        </div>
+        <div id="mode-detail" class="readout-detail">
+          <h3>Beyond the total</h3>
+          <p>
+            The top-right cell contains 31 of 90 points. Spatial supervision
+            preserves where the count comes from.
+          </p>
+        </div>
+      </aside>
+    </div>
+    <div class="qa-panel">
+      <span class="micro-label">Grounded question & answer</span>
+      <h3 id="qa-question">{sample.qa[0].question}</h3>
+      <p id="qa-answer">{sample.qa[0].answer}</p>
+      <div class="qa-controls">
+        <label for="qa-select">Annotation example</label>
+        <select id="qa-select">
+          {sample.qa.map((_, i) => (
+            <option value={i}>Question {i + 1}</option>
+          ))}
+        </select>
+        <span class="source-note">Original released QA text</span>
+      </div>
+    </div>
+  </div>
+  <p class="figure-caption">
+    <strong>Evidence explorer.</strong> RGB, points, semantic-region boxes,
+    visibility labels and precomputed density maps are aligned to the same
+    sample. Region memberships may overlap; boxes are not pixel masks. Hotspot
+    ecological interpretations are model-generated annotations, not established
+    causal findings. <a href="#provenance">Source & license</a>
+  </p>
+</section>
+<script src="../lib/counting.ts"></script>

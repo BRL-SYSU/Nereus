@@ -1,0 +1,45 @@
+Nereus research homepage
+
+IOCfish5K images and original point annotations:
+Guolei Sun, Zhaochong An, Yun Liu, Ce Liu, Christos Sakaridis,
+Deng-Ping Fan, and Luc Van Gool.
+Indiscernible Object Counting in Underwater Scenes, CVPR 2023.
+https://github.com/GuoleiSun/Indiscernible-Object-Counting
+https://creativecommons.org/licenses/by-nc/4.0/
+
+Samples 0000, 0001, 0003 and 5044 are resized and WebP-compressed for a noncommercial
+academic demonstration. Existing watermarks are preserved. Display overlays use
+existing annotations. A favicon is cropped/resized from sample0000.
+Nereus annotation additions are subject to the source release terms and upstream
+rights. No blanket permission is granted for unrelated dataset components.
+
+The local preview now includes three full-frame attribute sample exports from
+Nereus object_attribute_understanding/test: Scorpaenidae, cuttlefish and Narella.
+Their upstream FathomNet records specify CC-BY-NC-ND-4.0 for images and
+CC-BY-NC-4.0 for original boxes. These are NOT covered by IOCfish5K's license.
+Source URLs, original image URLs, dataset revision, file hashes and transformation
+records are in website/public/assets/attributes/manifest.json. Website image
+files are full-frame resized WebP versions; boxes and zoom are browser layers,
+not baked into redistributed photographs. On 2026-10-14, the project owner
+confirmed having permission to publicly show these three examples and the
+current interactive presentation, and authorized publication of the full site.
+This owner confirmation does not replace upstream licenses or grant others
+additional redistribution or adaptation rights.
+No anonymous manuscript PDF is included. No model predictions are invented.
+
+At the authors' request, Figures 2 (Motivation) and 4 (Construction pipeline)
+from the supplied Nereus manuscript are rendered as WebP figures for local
+preview. Page margins and surrounding text are removed; figure contents and
+proportions are preserved. Original captions appear below the figures. No PDF
+download is provided. The owner authorized public release of this full page on
+2026-10-14; upstream image rights remain applicable.
+
+Fonts: Manrope and DM Serif Display, SIL Open Font License1.1.
+Icons: Lucide, ISC license. Notices are bundled under website/public/assets/licenses/.
+The bundled Lucide notice also preserves MIT terms for Feather-derived icons.
+Original Nereus source NOTICE, LICENSE, THIRD_PARTY_SOURCES and counting license
+information are retained there; they apply to source materials, not new site code.
+The academic-project-astro-template was inspected but no code/assets were copied.
+
+Licensing of newly authored website implementation is pending owner selection.
+This NOTICE does not grant an additional software or data license.
