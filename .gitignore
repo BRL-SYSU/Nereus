@@ -1,9 +1,8 @@
-website/node_modules/
-website/dist/
-website/.astro/
-website/.cache/
-website/test-results/
-website/playwright-report/
+website/
+scripts/
+.github/workflows/deploy-pages.yml
+docs/*.md
+!docs/RESEARCH_CODE_RELEASE.md
 .local/
 docs/LOCAL_SOURCE_PATHS.md
 .env

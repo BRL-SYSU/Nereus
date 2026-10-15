@@ -14,7 +14,7 @@ regions, camouflage states, and density hotspots with contextual environmental
 reasoning. The project page contains interactive examples drawn from annotated
 data, rather than model predictions.
 
-![Nereus motivation](website/public/assets/paper/motivation-1440.webp)
+![Nereus motivation](assets/motivation-1440.webp)
 
 ## Release Status
 
@@ -135,13 +135,13 @@ Other integration/GPU tests require the corresponding artifacts and hardware.
 
 ## Annotation Pipeline
 
-![Nereus annotation pipeline](website/public/assets/paper/pipeline-1440.webp)
+![Nereus annotation pipeline](assets/pipeline-1440.webp)
 
 ## Project Page
 
-The public site is hosted at [brl-sysu.github.io/Nereus](https://brl-sysu.github.io/Nereus/),
-independently of the development server. Source is in `website/`; instructions
-are in [docs/WEBSITE.md](docs/WEBSITE.md). Python experiments do not need Node.js.
+The public site is hosted at [brl-sysu.github.io/Nereus](https://brl-sysu.github.io/Nereus/).
+This branch contains research code only; website source and build tooling are
+not included. Python experiments do not need Node.js.
 
 ## Acknowledgements and Rights
 
@@ -151,8 +151,7 @@ We thank the authors of [IOCfish5K](https://github.com/GuoleiSun/Indiscernible-O
 [CLIP-Count](https://github.com/songrise/CLIP-Count).
 External models and data retain their licenses. IOCfish5K is CC BY-NC 4.0;
 this is not a blanket license over all Nereus components or code. Software
-licensing is pending owner selection. See [NOTICE](NOTICE) and
-[asset provenance](docs/ASSET_MANIFEST.md). Permission to publish curated website
+licensing is pending owner selection. See [NOTICE](NOTICE). Permission to publish curated website
 examples does not grant unrestricted downstream adaptation rights.
 
 ## Citation
