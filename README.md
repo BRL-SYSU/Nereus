@@ -1,6 +1,6 @@
 # Nereus: A Large-Scale Underwater Dataset for Fine-Grained Attribute Understanding and Grounded Counting Perception
 
-**Jingtao Deng<sup>1,*</sup>**, Zihao Jin<sup>1,*</sup>**, Yuehe Chen<sup>1</sup>, Feixiang He<sup>2</sup>, Shuiwang Li<sup>3</sup>, Dan Zeng<sup>1,&dagger;</sup>
+***Jingtao Deng***<sup>1,*</sup>, ***Zihao Jin***<sup>1,*</sup>, Yuehe Chen<sup>1</sup>, Feixiang He<sup>2</sup>, Shuiwang Li<sup>3</sup>, Dan Zeng<sup>1,&dagger;</sup>
 
 <sup>1</sup> Sun Yat-sen University &nbsp; <sup>2</sup> Central South University &nbsp; <sup>3</sup> Guilin University of Technology<br>
 <sup>*</sup> Equal contribution &nbsp; <sup>&dagger;</sup> Corresponding author
