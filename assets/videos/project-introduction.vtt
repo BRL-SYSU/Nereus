@@ -1,0 +1,129 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:06.000
+Nereus connects fine-grained underwater attributes with spatially grounded counting.
+
+2
+00:00:06.000 --> 00:00:12.000
+A dataset and evaluation resource for asking not only what is present, but what the image supports.
+
+3
+00:00:12.000 --> 00:00:18.000
+Underwater scenes combine clutter, camouflage and densely overlapping organisms.
+
+4
+00:00:18.000 --> 00:00:24.000
+A category name does not describe morphology, condition or interaction.
+
+5
+00:00:24.000 --> 00:00:30.000
+A total count does not explain where organisms gather or how their surroundings relate to that pattern.
+
+6
+00:00:30.000 --> 00:00:38.000
+The manuscript reports 88,555 images and approximately 2.68 million question-answer pairs.
+
+7
+00:00:38.000 --> 00:00:46.000
+The schema spans 136 attribute dimensions. Fields are organism-specific, not universal to every object.
+
+8
+00:00:46.000 --> 00:00:54.000
+Heterogeneous underwater sources are organized into object-centered and point-grounded supervision.
+
+9
+00:00:54.000 --> 00:01:02.000
+Object crops, image context and biological priors support multi-model attribute discussion and arbitration.
+
+10
+00:01:02.000 --> 00:01:10.000
+Point annotations support region counts, visibility labels, density maps and evidence-linked questions.
+
+11
+00:01:10.000 --> 00:01:19.000
+Annotation combines model-assisted generation with targeted human review and expert calibration.
+
+12
+00:01:19.000 --> 00:01:28.000
+Quality ratings and selected-case arbitration are not a whole-dataset accuracy estimate.
+
+13
+00:01:28.000 --> 00:01:38.000
+A localized fish example links rough texture, high camouflage and a hiding-in-coral interaction label.
+
+14
+00:01:38.000 --> 00:01:48.000
+The cuttlefish record describes mottled skin, high camouflage and a resting posture.
+
+15
+00:01:48.000 --> 00:01:58.000
+The coral record combines fan-like growth, intact tissue and a coral-rock contact label.
+
+16
+00:01:58.000 --> 00:02:06.000
+Region-aware counting links each annotated fish to image coordinates and spatial cells.
+
+17
+00:02:06.000 --> 00:02:11.000
+Sample 0000 contains 90 annotated fish. Its densest grid cell is top-right, with 31.
+
+18
+00:02:11.000 --> 00:02:22.000
+Semantic memberships include 82 open-water and 5 reef-rock labels. Region memberships can overlap.
+
+19
+00:02:22.000 --> 00:02:30.000
+Camouflage-state counting separates clear, ambiguous and highly camouflaged annotations.
+
+20
+00:02:30.000 --> 00:02:38.000
+Sample 0001 has 134 clear, 130 ambiguous and 6 highly camouflaged point annotations.
+
+21
+00:02:38.000 --> 00:02:41.000
+The close-up shows source-image evidence for highly camouflaged annotations.
+
+22
+00:02:41.000 --> 00:02:44.000
+Colored points are annotation labels, not model predictions.
+
+23
+00:02:44.000 --> 00:02:51.000
+Density-hotspot reasoning starts from a localized response in a supplied annotation-derived heatmap.
+
+24
+00:02:51.000 --> 00:02:58.000
+In open water, the annotation relates aggregation to available swimming space and possible schooling.
+
+25
+00:02:58.000 --> 00:03:05.000
+Near branching coral, visible habitat structure grounds the description of the fish aggregation.
+
+26
+00:03:05.000 --> 00:03:12.000
+Shelter and food are annotation hypotheses, not verified causes. Depth labels are relative, not metric.
+
+27
+00:03:12.000 --> 00:03:18.000
+Track A uses RGB only. Track B additionally supplies a ground-truth-derived density heatmap.
+
+28
+00:03:18.000 --> 00:03:24.000
+Count error, relative count accuracy and grounded reasoning measure different capabilities.
+
+29
+00:03:24.000 --> 00:03:33.000
+Table 2 reports higher attribute accuracy after Nereus supervision for all three open backbones shown.
+
+30
+00:03:33.000 --> 00:03:42.000
+For InternVL2.5-8B, Table 3A reports lower count MAE and higher densest-cell accuracy under QAS.
+
+31
+00:03:42.000 --> 00:03:50.000
+Use the stated input conditions and source licenses. Ecological interpretations require domain validation.
+
+32
+00:03:50.000 --> 00:04:00.000
+Explore the data, research code and interactive examples on the Nereus project page.

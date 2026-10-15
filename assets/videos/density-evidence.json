@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "license": "CC BY-NC 4.0",
+  "credit": "Guolei Sun et al., IOCfish5K; Nereus annotations",
+  "disclosure": "English display lines summarize original evidence, ecological_hint and causal_chain. Interpretations are hypotheses, not verified ecological causes. Depth labels are annotation-derived and relative, not metric measurements. Camera crops are presentation choices, not new annotations.",
+  "cases": [
+    {
+      "sampleId": "0001",
+      "hotspotId": 1,
+      "title": "Schooling in open water",
+      "crop": {
+        "x": 960,
+        "y": 80,
+        "w": 800,
+        "h": 450
+      },
+      "evidenceLines": [
+        "Blue water around fish;",
+        "no visible bottom structure."
+      ],
+      "interpretationLines": [
+        "Open swimming space",
+        "may support schooling",
+        "or temporary aggregation."
+      ],
+      "image": "assets/counting/0001-1920.webp",
+      "heatmap": "assets/counting/0001-density.webp",
+      "width": 1920,
+      "height": 1080,
+      "point": [
+        1327,
+        215
+      ],
+      "densityRegion": [
+        1325,
+        212,
+        5,
+        7
+      ],
+      "selectedPatchType": "background_patch",
+      "contextPatch": {
+        "x": 1199,
+        "y": 105,
+        "w": 256,
+        "h": 256
+      },
+      "semanticResult": {
+        "semantic_label": "open water",
+        "evidence": "The image shows a large, uniform blue expanse with no visible substrate or structural features like rocks, coral, or seagrass. The fish are swimming freely in a homogeneous medium, characteristic of open water. The black masked region is foreground removal and does not represent the background.",
+        "ecological_hint": "In high fish-density areas, open water often supports schooling behavior and provides ample space for movement, contrasting with structured habitats like coral reefs or seagrass beds which typically have more defined boundaries and substrate."
+      },
+      "depthSummary": {
+        "point_depth": 43.16836929321289,
+        "patch_depth_mean": 38.923377990722656,
+        "patch_depth_std": 21.228675842285156,
+        "point_gradient": 0.0029117921367287636,
+        "patch_gradient_p90": 0.0375012643635273,
+        "is_depth_edge": false,
+        "foreground_depth_mean": 50.25059127807617,
+        "background_depth_mean": 42.79859161376953,
+        "depth_difference": 7.451999664306641,
+        "relative_depth_label": "相对更深",
+        "depth_edge_description": "不处于明显的深度突变边缘",
+        "coarse_position": "右上",
+        "depth_patch_xyxy": [
+          1199,
+          105,
+          1455,
+          361
+        ]
+      },
+      "depthLabel": "Relatively deeper",
+      "causalChain": "热区坐标 (1327, 215) -> 积分数量约 0.1 条 -> 位于图像右上，热点点位深度相对周围相对更深，不处于明显的深度突变边缘 -> 背景语义标签为“open water” -> 归因：开阔水域中的高密度更像是群游、流场汇聚或暂时性的集群行为。In high fish-density areas, open water often supports schooling behavior and provides ample space for movement, contrasting with structured habitats like coral reefs or seagrass beds which typically have more defined boundaries and substrate. 视觉证据：The image shows a large, uniform blue expanse with no visible substrate or structural features like rocks, coral, or seagrass. The fish are swimming freely in a homogeneous medium, characteristic of open water. The black masked region is foreground removal and does not represent the background.",
+      "annotationSource": "annotations/final_annotations/0001.json",
+      "annotationSha256": "79e2b34d47eebd12f79c4f94bcf91b65fa7a6d16fed9e9f2c902391d13e1fea5"
+    },
+    {
+      "sampleId": "0003",
+      "hotspotId": 1,
+      "title": "Aggregation near coral",
+      "crop": {
+        "x": 550,
+        "y": 290,
+        "w": 800,
+        "h": 450
+      },
+      "evidenceLines": [
+        "Branching coral structures;",
+        "fish swimming nearby."
+      ],
+      "interpretationLines": [
+        "Reef structure may offer",
+        "shelter and food, relating",
+        "to nearby aggregation."
+      ],
+      "image": "assets/counting/0003-1920.webp",
+      "heatmap": "assets/counting/0003-density.webp",
+      "width": 1920,
+      "height": 1080,
+      "point": [
+        886,
+        446
+      ],
+      "densityRegion": [
+        880,
+        429,
+        24,
+        25
+      ],
+      "selectedPatchType": "context_patch",
+      "contextPatch": {
+        "x": 831,
+        "y": 347,
+        "w": 256,
+        "h": 256
+      },
+      "semanticResult": {
+        "semantic_label": "coral reef",
+        "evidence": "The image displays a textured, branching, light-colored structure consistent with coral formations, with fish swimming nearby in a typical reef habitat. The presence of fish density suggests a reef environment, not open water or sandy bottom.",
+        "ecological_hint": "Coral reefs are known for high fish biodiversity and are often referred to as 'fish-density hotspots' due to the abundance of shelter and food resources they provide."
+      },
+      "depthSummary": {
+        "point_depth": 34.92489242553711,
+        "patch_depth_mean": 51.8365478515625,
+        "patch_depth_std": 57.60011291503906,
+        "point_gradient": 0.003381110494956374,
+        "patch_gradient_p90": 0.025467675179243088,
+        "is_depth_edge": false,
+        "foreground_depth_mean": 6.215521335601807,
+        "background_depth_mean": 71.75738525390625,
+        "depth_difference": -65.54186391830444,
+        "relative_depth_label": "相对更浅",
+        "depth_edge_description": "不处于明显的深度突变边缘",
+        "coarse_position": "中央",
+        "depth_patch_xyxy": [
+          831,
+          347,
+          1087,
+          603
+        ]
+      },
+      "depthLabel": "Relatively shallower",
+      "causalChain": "热区坐标 (886, 446) -> 积分数量约 0.9 条 -> 位于图像中央，热点点位深度相对周围相对更浅，不处于明显的深度突变边缘 -> 背景语义标签为“coral reef” -> 归因：珊瑚礁提供复杂结构、遮蔽与食物来源，鱼群在附近聚集通常与栖息、躲避和觅食有关。Coral reefs are known for high fish biodiversity and are often referred to as 'fish-density hotspots' due to the abundance of shelter and food resources they provide. 视觉证据：The image displays a textured, branching, light-colored structure consistent with coral formations, with fish swimming nearby in a typical reef habitat. The presence of fish density suggests a reef environment, not open water or sandy bottom.",
+      "annotationSource": "annotations/final_annotations/0003.json",
+      "annotationSha256": "cdba1d4101cdd7618e114fb2b2e393bd308619acfdd6df2846c3bb5e7372e7ef"
+    }
+  ]
+}

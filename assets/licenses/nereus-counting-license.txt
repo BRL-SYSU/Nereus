@@ -1,0 +1,53 @@
+# Grounded Counting License Information
+
+## Upstream Material
+
+`grounded_counting/images/` and the IOCfish5K source annotation information
+represented in `grounded_counting/annotations/` originate from IOCfish5K.
+
+The IOCfish5K authors state that IOCfish5K and IOCfish5K-D are licensed under
+the Creative Commons Attribution-NonCommercial 4.0 International License
+(CC BY-NC 4.0):
+
+https://creativecommons.org/licenses/by-nc/4.0/
+
+Official project:
+
+https://github.com/GuoleiSun/Indiscernible-Object-Counting
+
+Commercial use requires separate permission from the IOCfish5K authors.
+
+The IOCfish5K-covered upstream material in this component includes the source
+images, source point annotations, and the byte-for-byte original split
+manifests under `metadata/splits/iocfish5k_original/`.
+
+## Nereus Additions
+
+Nereus-authored task enrichments, QA data, metadata, and documentation in this
+component are licensed under CC BY-NC 4.0, subject to the IOCfish5K terms that
+continue to apply to the underlying images and source annotations.
+
+## Required Attribution
+
+Retain this file and the repository's root `NOTICE` and
+`THIRD_PARTY_SOURCES.md`. Cite:
+
+```bibtex
+@inproceedings{sun2023indiscernible,
+  title={Indiscernible Object Counting in Underwater Scenes},
+  author={Sun, Guolei and An, Zhaochong and Liu, Yun and Liu, Ce and
+          Sakaridis, Christos and Fan, Deng-Ping and Van Gool, Luc},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and
+             Pattern Recognition},
+  year={2023}
+}
+```
+
+When redistributing modified annotations or QA data, identify Nereus as the
+source of the derived material, link to CC BY-NC 4.0, and state that changes
+were made.
+
+## No Additional Rights
+
+This component license does not grant trademark, privacy, publicity, patent,
+or commercial-use rights beyond those provided by the applicable licenses.

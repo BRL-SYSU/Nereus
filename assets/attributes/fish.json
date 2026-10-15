@@ -1,0 +1,38 @@
+{
+  "image": "2c852905-9fb3-46bb-927f-4d90195afb0f.jpg",
+  "width": 4000,
+  "height": 3000,
+  "objects": [
+    {
+      "bbox": [
+        553,
+        773,
+        2110,
+        1358
+      ],
+      "group": "Fish",
+      "concept": "Scorpaenidae",
+      "attributes": {
+        "species": "Scorpaena jacksoniensis",
+        "diagnosis": "Prominent eyes, rough texture, and mottled coloration with a flattened body shape.",
+        "dorsal_fin": "present",
+        "caudal_fin": "absent",
+        "pectoral_fin": "present",
+        "pelvic_fin": "present",
+        "anal_fin": "present",
+        "adipose_fin": "absent",
+        "barbel": "absent",
+        "body_shape_lateral": "flattened",
+        "type_of_eyes": "large-eyed",
+        "type_of_mouth_snout": "terminal mouth",
+        "cross_section": "compressed",
+        "dorsal_head_profile": "convex",
+        "color": "multicolored",
+        "camouflage": "high",
+        "texture": "rough",
+        "body_damage": "none",
+        "interaction": "['hiding-in-coral']"
+      }
+    }
+  ]
+}

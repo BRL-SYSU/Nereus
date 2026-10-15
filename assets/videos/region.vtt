@@ -1,0 +1,17 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.200
+Region-aware counting. Sample 0000. 90 annotated fish appear point by point across a three-by-three grid.
+
+2
+00:00:04.200 --> 00:00:07.800
+Which cell is densest? Top-right: 31 point annotations. The camera moves into that cell.
+
+3
+00:00:07.800 --> 00:00:10.600
+Semantic region labels: 82 fish are annotated as open water.
+
+4
+00:00:10.600 --> 00:00:14.000
+5 are annotated as reef rock. Open water has 77 more. These are annotation labels, not predictions; other region labels are not shown in this comparison.

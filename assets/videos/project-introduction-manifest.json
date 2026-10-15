@@ -1,0 +1,335 @@
+{
+  "title": "Nereus: A Large-Scale Underwater Dataset for Fine-Grained Attribute Understanding and Grounded Counting Perception",
+  "duration": 240,
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "audio": false,
+  "language": "en",
+  "chapters": [
+    {
+      "id": "opening",
+      "start": 0,
+      "end": 12,
+      "title": "Nereus"
+    },
+    {
+      "id": "motivation",
+      "start": 12,
+      "end": 30,
+      "title": "Why finer perception?"
+    },
+    {
+      "id": "scale",
+      "start": 30,
+      "end": 46,
+      "title": "A structured underwater resource"
+    },
+    {
+      "id": "pipeline",
+      "start": 46,
+      "end": 70,
+      "title": "From images to grounded supervision"
+    },
+    {
+      "id": "quality",
+      "start": 70,
+      "end": 88,
+      "title": "Annotation and quality control"
+    },
+    {
+      "id": "attributes",
+      "start": 88,
+      "end": 118,
+      "title": "Fine-grained attributes"
+    },
+    {
+      "id": "region",
+      "start": 118,
+      "end": 142,
+      "title": "Region-aware counting"
+    },
+    {
+      "id": "camouflage",
+      "start": 142,
+      "end": 164,
+      "title": "Camouflage-state counting"
+    },
+    {
+      "id": "density",
+      "start": 164,
+      "end": 192,
+      "title": "Density-hotspot reasoning"
+    },
+    {
+      "id": "protocol",
+      "start": 192,
+      "end": 204,
+      "title": "What does the benchmark measure?"
+    },
+    {
+      "id": "results",
+      "start": 204,
+      "end": 222,
+      "title": "Evidence from the benchmarks"
+    },
+    {
+      "id": "limits",
+      "start": 222,
+      "end": 230,
+      "title": "Use with the right assumptions"
+    },
+    {
+      "id": "closing",
+      "start": 230,
+      "end": 240,
+      "title": "Explore Nereus"
+    }
+  ],
+  "transcript": [
+    {
+      "start": 0,
+      "end": 6,
+      "text": "Nereus connects fine-grained underwater attributes with spatially grounded counting."
+    },
+    {
+      "start": 6,
+      "end": 12,
+      "text": "A dataset and evaluation resource for asking not only what is present, but what the image supports."
+    },
+    {
+      "start": 12,
+      "end": 18,
+      "text": "Underwater scenes combine clutter, camouflage and densely overlapping organisms."
+    },
+    {
+      "start": 18,
+      "end": 24,
+      "text": "A category name does not describe morphology, condition or interaction."
+    },
+    {
+      "start": 24,
+      "end": 30,
+      "text": "A total count does not explain where organisms gather or how their surroundings relate to that pattern."
+    },
+    {
+      "start": 30,
+      "end": 38,
+      "text": "The manuscript reports 88,555 images and approximately 2.68 million question-answer pairs."
+    },
+    {
+      "start": 38,
+      "end": 46,
+      "text": "The schema spans 136 attribute dimensions. Fields are organism-specific, not universal to every object."
+    },
+    {
+      "start": 46,
+      "end": 54,
+      "text": "Heterogeneous underwater sources are organized into object-centered and point-grounded supervision."
+    },
+    {
+      "start": 54,
+      "end": 62,
+      "text": "Object crops, image context and biological priors support multi-model attribute discussion and arbitration."
+    },
+    {
+      "start": 62,
+      "end": 70,
+      "text": "Point annotations support region counts, visibility labels, density maps and evidence-linked questions."
+    },
+    {
+      "start": 70,
+      "end": 79,
+      "text": "Annotation combines model-assisted generation with targeted human review and expert calibration."
+    },
+    {
+      "start": 79,
+      "end": 88,
+      "text": "Quality ratings and selected-case arbitration are not a whole-dataset accuracy estimate."
+    },
+    {
+      "start": 88,
+      "end": 98,
+      "text": "A localized fish example links rough texture, high camouflage and a hiding-in-coral interaction label."
+    },
+    {
+      "start": 98,
+      "end": 108,
+      "text": "The cuttlefish record describes mottled skin, high camouflage and a resting posture."
+    },
+    {
+      "start": 108,
+      "end": 118,
+      "text": "The coral record combines fan-like growth, intact tissue and a coral-rock contact label."
+    },
+    {
+      "start": 118,
+      "end": 126,
+      "text": "Region-aware counting links each annotated fish to image coordinates and spatial cells."
+    },
+    {
+      "start": 126,
+      "end": 131,
+      "text": "Sample 0000 contains 90 annotated fish. Its densest grid cell is top-right, with 31."
+    },
+    {
+      "start": 131,
+      "end": 142,
+      "text": "Semantic memberships include 82 open-water and 5 reef-rock labels. Region memberships can overlap."
+    },
+    {
+      "start": 142,
+      "end": 150,
+      "text": "Camouflage-state counting separates clear, ambiguous and highly camouflaged annotations."
+    },
+    {
+      "start": 150,
+      "end": 158,
+      "text": "Sample 0001 has 134 clear, 130 ambiguous and 6 highly camouflaged point annotations."
+    },
+    {
+      "start": 158,
+      "end": 161,
+      "text": "The close-up shows source-image evidence for highly camouflaged annotations."
+    },
+    {
+      "start": 161,
+      "end": 164,
+      "text": "Colored points are annotation labels, not model predictions."
+    },
+    {
+      "start": 164,
+      "end": 171,
+      "text": "Density-hotspot reasoning starts from a localized response in a supplied annotation-derived heatmap."
+    },
+    {
+      "start": 171,
+      "end": 178,
+      "text": "In open water, the annotation relates aggregation to available swimming space and possible schooling."
+    },
+    {
+      "start": 178,
+      "end": 185,
+      "text": "Near branching coral, visible habitat structure grounds the description of the fish aggregation."
+    },
+    {
+      "start": 185,
+      "end": 192,
+      "text": "Shelter and food are annotation hypotheses, not verified causes. Depth labels are relative, not metric."
+    },
+    {
+      "start": 192,
+      "end": 198,
+      "text": "Track A uses RGB only. Track B additionally supplies a ground-truth-derived density heatmap."
+    },
+    {
+      "start": 198,
+      "end": 204,
+      "text": "Count error, relative count accuracy and grounded reasoning measure different capabilities."
+    },
+    {
+      "start": 204,
+      "end": 213,
+      "text": "Table 2 reports higher attribute accuracy after Nereus supervision for all three open backbones shown."
+    },
+    {
+      "start": 213,
+      "end": 222,
+      "text": "For InternVL2.5-8B, Table 3A reports lower count MAE and higher densest-cell accuracy under QAS."
+    },
+    {
+      "start": 222,
+      "end": 230,
+      "text": "Use the stated input conditions and source licenses. Ecological interpretations require domain validation."
+    },
+    {
+      "start": 230,
+      "end": 240,
+      "text": "Explore the data, research code and interactive examples on the Nereus project page."
+    }
+  ],
+  "purpose": "Public project introduction; not certified against account-specific conference upload requirements.",
+  "scientificSources": [
+    "Nereus manuscript Abstract, Sections 3-5, Figures 3-4, Tables 2-3, Appendix A.1 and B.3",
+    "Existing curated source annotations"
+  ],
+  "sourceAssets": [
+    {
+      "path": "assets/attributes/fish.webp",
+      "sha256": "42c58558ce66b16b15fd261fd6f8322316e2d09694e67c9cef9ea0ca104faf1e"
+    },
+    {
+      "path": "assets/attributes/cuttlefish.webp",
+      "sha256": "db9b23c8b94645b9cf579d331db1b12918df217a0f089f24ceeba2226839920a"
+    },
+    {
+      "path": "assets/attributes/coral.webp",
+      "sha256": "8bc7bd16a33bcaf49760d6bf7b33b3fff4fdc87311477468e0a86eeb5f4546d1"
+    },
+    {
+      "path": "assets/paper/motivation.webp",
+      "sha256": "da9f66a913802dedfac7d52c1b381dd32a05796c16ffa8ad39404c7b4ce49421"
+    },
+    {
+      "path": "assets/paper/pipeline.webp",
+      "sha256": "8c61067d89750acbbcdf652480ed651f21628e117adc0029c21052fbf456f2b8"
+    },
+    {
+      "path": "assets/counting/0000-1920.webp",
+      "sha256": "268915d4fab3db415c366178bc6ba4991c942a0ecf57470cd2ad2609a82f984e"
+    },
+    {
+      "path": "assets/counting/0000-density.webp",
+      "sha256": "e3aff992592279b617d195107f4cd9767c1bb01387f96d14158924fd822f5cc4"
+    },
+    {
+      "path": "assets/counting/0001-1920.webp",
+      "sha256": "2f6f870e0653ff45bb7808f6d85a741894cc55ca4675f648f53e7ee4f7d16b19"
+    },
+    {
+      "path": "assets/counting/0001-density.webp",
+      "sha256": "ac93cb5c8274aacc20ddbef998bd2fd9072073a1419c3dc7a7e897ace0ee9350"
+    },
+    {
+      "path": "assets/counting/0003-1920.webp",
+      "sha256": "77547353a7a57dbd5eb7671963aeed326ad16b3349a90526bac555cdb6b13c45"
+    },
+    {
+      "path": "assets/counting/0003-density.webp",
+      "sha256": "9e40a72cf13076bd4c6033b0927c2ebebb3a1ff590373e339fbcb5bac1c9d793"
+    }
+  ],
+  "credits": {
+    "counting": "Guolei Sun et al., IOCfish5K (CVPR 2023), CC BY-NC 4.0",
+    "attributes": [
+      {
+        "id": "fish",
+        "credit": "FathomNet / FathomVerse (see original source record)",
+        "source": "https://database.fathomnet.org/api/images/2c852905-9fb3-46bb-927f-4d90195afb0f",
+        "imageLicense": "CC-BY-NC-ND-4.0",
+        "bboxLicense": "CC-BY-NC-4.0"
+      },
+      {
+        "id": "cuttlefish",
+        "credit": "FathomNet / FathomVerse (see original source record)",
+        "source": "https://database.fathomnet.org/api/images/13460870-cb45-4597-a743-6c0c0ba333ec",
+        "imageLicense": "CC-BY-NC-ND-4.0",
+        "bboxLicense": "CC-BY-NC-4.0"
+      },
+      {
+        "id": "coral",
+        "credit": "NOAA Ocean Exploration / Benthic Animal Guide",
+        "source": "https://database.fathomnet.org/api/images/00c103b2-6d12-4929-8867-a1614cada73d",
+        "imageLicense": "CC-BY-NC-ND-4.0",
+        "bboxLicense": "CC-BY-NC-4.0"
+      }
+    ],
+    "permission": "Owner authorized public presentation and this introduction film. Source-specific rights remain; no blanket downstream adaptation license.",
+    "transformations": "Image resizing, camera motion, annotation overlays, edited task visualizations, manuscript diagrams and animated charts. No synthetic biological image content."
+  },
+  "output": {
+    "file": "project-introduction.mp4",
+    "bytes": 37515975,
+    "sha256": "894ec4509bcf520c15d4ddeb6c3357a3b05291a866e1872a1ebc743c27150b1f"
+  }
+}

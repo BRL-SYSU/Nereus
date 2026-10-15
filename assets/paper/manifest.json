@@ -1,0 +1,31 @@
+{
+  "source": "Nereus manuscript supplied by the authors",
+  "sha256": "7ebe38841e851540c3c6522bb37a2c8b110ddce3ee0d9638d8bcce6d8ecc8d26",
+  "method": "Original PDF rendering; page margins and surrounding text removed. Figure contents and proportions unchanged. The manuscript PDF is not distributed.",
+  "figures": [
+    {
+      "id": "motivation",
+      "page": 2,
+      "figure": 2,
+      "title": "Motivation",
+      "crop": {
+        "left": 648,
+        "top": 432,
+        "width": 2416,
+        "height": 1112
+      }
+    },
+    {
+      "id": "pipeline",
+      "page": 5,
+      "figure": 4,
+      "title": "Pipeline",
+      "crop": {
+        "left": 656,
+        "top": 2224,
+        "width": 2408,
+        "height": 952
+      }
+    }
+  ]
+}

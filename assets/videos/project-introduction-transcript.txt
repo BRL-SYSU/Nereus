@@ -1,0 +1,63 @@
+Nereus connects fine-grained underwater attributes with spatially grounded counting.
+
+A dataset and evaluation resource for asking not only what is present, but what the image supports.
+
+Underwater scenes combine clutter, camouflage and densely overlapping organisms.
+
+A category name does not describe morphology, condition or interaction.
+
+A total count does not explain where organisms gather or how their surroundings relate to that pattern.
+
+The manuscript reports 88,555 images and approximately 2.68 million question-answer pairs.
+
+The schema spans 136 attribute dimensions. Fields are organism-specific, not universal to every object.
+
+Heterogeneous underwater sources are organized into object-centered and point-grounded supervision.
+
+Object crops, image context and biological priors support multi-model attribute discussion and arbitration.
+
+Point annotations support region counts, visibility labels, density maps and evidence-linked questions.
+
+Annotation combines model-assisted generation with targeted human review and expert calibration.
+
+Quality ratings and selected-case arbitration are not a whole-dataset accuracy estimate.
+
+A localized fish example links rough texture, high camouflage and a hiding-in-coral interaction label.
+
+The cuttlefish record describes mottled skin, high camouflage and a resting posture.
+
+The coral record combines fan-like growth, intact tissue and a coral-rock contact label.
+
+Region-aware counting links each annotated fish to image coordinates and spatial cells.
+
+Sample 0000 contains 90 annotated fish. Its densest grid cell is top-right, with 31.
+
+Semantic memberships include 82 open-water and 5 reef-rock labels. Region memberships can overlap.
+
+Camouflage-state counting separates clear, ambiguous and highly camouflaged annotations.
+
+Sample 0001 has 134 clear, 130 ambiguous and 6 highly camouflaged point annotations.
+
+The close-up shows source-image evidence for highly camouflaged annotations.
+
+Colored points are annotation labels, not model predictions.
+
+Density-hotspot reasoning starts from a localized response in a supplied annotation-derived heatmap.
+
+In open water, the annotation relates aggregation to available swimming space and possible schooling.
+
+Near branching coral, visible habitat structure grounds the description of the fish aggregation.
+
+Shelter and food are annotation hypotheses, not verified causes. Depth labels are relative, not metric.
+
+Track A uses RGB only. Track B additionally supplies a ground-truth-derived density heatmap.
+
+Count error, relative count accuracy and grounded reasoning measure different capabilities.
+
+Table 2 reports higher attribute accuracy after Nereus supervision for all three open backbones shown.
+
+For InternVL2.5-8B, Table 3A reports lower count MAE and higher densest-cell accuracy under QAS.
+
+Use the stated input conditions and source licenses. Ecological interpretations require domain validation.
+
+Explore the data, research code and interactive examples on the Nereus project page.

@@ -1,0 +1,1 @@
+var e=e=>`${`/Nereus/`.replace(/\/$/,``)}/${e.replace(/^\//,``)}`;export{e as t};
