@@ -1,0 +1,7 @@
+# Shared utilities; install a compatible torch/torchvision pair separately.
+numpy
+Pillow
+scipy
+matplotlib
+requests
+# External counting models additionally require upstream dependencies.

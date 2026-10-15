@@ -17,3 +17,14 @@ docs/LOCAL_SOURCE_PATHS.md
 *.tar*
 __pycache__/
 .DS_Store
+.venv/
+.secrets/
+models/
+test_dataset/
+Experiments/**/data/
+Experiments/**/outputs/
+Experiments/**/analysis/
+Experiments/canonical_dataset/
+Experiments/canonical_dataset_folders*/
+*.safetensors
+.pytest_cache/
